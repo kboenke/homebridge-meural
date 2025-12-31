@@ -6,6 +6,7 @@ import { CanvasAccessory } from './platformAccessory';
 
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
+import { CognitoIdentityProviderClient, InitiateAuthCommand } from '@aws-sdk/client-cognito-identity-provider';
 
 axiosRetry(axios, { retries: 5, retryDelay: axiosRetry.exponentialDelay});
 
@@ -61,24 +62,31 @@ export class CanvasPlatform implements DynamicPlatformPlugin {
   }
 
   /**
-   * Promise to refresh auth token from a new auth request
+   * Promise to refresh auth token from a new auth request using AWS Cognito
    */
   async refreshToken(): Promise<string> {
     try {
-      const options = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+      const client = new CognitoIdentityProviderClient({ region: 'eu-west-1' });
+      
+      const command = new InitiateAuthCommand({
+        ClientId: '487bd4kvb1fnop6mbgk8gu5ibf',
+        AuthFlow: 'USER_PASSWORD_AUTH',
+        AuthParameters: {
+          USERNAME: this.config.account_email,
+          PASSWORD: this.config.account_password,
         },
-      };
-      const response = await axios.post('https://api.meural.com/v0/authenticate', {
-        username: this.config.account_email,
-        password: this.config.account_password,
-      }, options);
-      this.token = 'Token ' + response.data.token;
-      return this.token;
+      });
+      
+      const response = await client.send(command);
+      
+      if (response.AuthenticationResult && response.AuthenticationResult.AccessToken) {
+        this.token = 'Token ' + response.AuthenticationResult.AccessToken;
+        return this.token;
+      } else {
+        throw new Error('Failed to get Meural API token from Cognito.');
+      }
     } catch (error) {
-      this.log.debug(error.message, error);
+      this.log.error('Authentication error:', error.message);
       return '';
     }
   }
