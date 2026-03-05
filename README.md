@@ -74,7 +74,7 @@ Then restart Homebridge.
 
 ## Version history
 
-`0.9.8`:
+`0.9.9-kbo`:
 
 * Fix slow handling of ActiveIdentifier callback bug
 

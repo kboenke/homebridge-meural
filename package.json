@@ -2,7 +2,7 @@
   "private": false,
   "displayName": "Meural Canvas",
   "name": "homebridge-meural",
-  "version": "0.9.8",
+  "version": "0.9.9-kbo",
   "description": "Control Meural canvases via HomeKit.",
   "license": "MIT",
   "repository": {
