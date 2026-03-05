@@ -27,6 +27,7 @@
     "homebridge-plugin"
   ],
   "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.0.0",
     "axios": "^1.12.2",
     "axios-retry": "^4.5.0"
   },
