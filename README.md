@@ -1,7 +1,7 @@
 # Meural Canvas
 
 [![License](https://img.shields.io/github/license/kboenke/homebridge-meural)](LICENSE)
-[![Build and Lint](https://github.com/kboenke/homebridge-meural/actions/workflows/build.yml/badge.svg)](https://github.com/kboenke/homebridge-meural/actions/workflows/build.yml)
+[![Build, Lint and Test](https://github.com/kboenke/homebridge-meural/actions/workflows/build.yml/badge.svg)](https://github.com/kboenke/homebridge-meural/actions/workflows/build.yml)
 
 Control Meural canvases via HomeKit. Supports single or multiple canvases.
 
@@ -106,6 +106,12 @@ Then restart Homebridge.
 2. `npm link` (first time only, to link npm repo for your local dev environment)
 3. `npm install`
 4. `npm run watch`
+
+Tests are executed in GitHub Actions. The test runner is installed in CI only and is not included in this plugin's package dependencies.
+
+To run tests manually without adding permanent dependencies:
+
+- `npx --yes vitest@^2.1.8 run`
 
 This repo is written in TypeScript.
 
