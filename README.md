@@ -1,14 +1,7 @@
-
-<p align="center">
-
-<img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
-
-<img src="https://avatars3.githubusercontent.com/u/17621476" width="150">
-
-</p>
-
-
 # Meural Canvas
+
+[![License](https://img.shields.io/github/license/kboenke/homebridge-meural)](LICENSE)
+[![Build and Lint](https://github.com/kboenke/homebridge-meural/actions/workflows/build.yml/badge.svg)](https://github.com/kboenke/homebridge-meural/actions/workflows/build.yml)
 
 Control Meural canvases via HomeKit. Supports single or multiple canvases.
 
@@ -25,6 +18,9 @@ Works with Canvas I, Canvas II, and Frame.
 ## Fork and compatibility notes
 
 This repository is maintained as a fork of the original `homebridge-meural` plugin.
+
+It exists to restore functionality after an authentication issue caused the original plugin to stop working.
+A Pull Request has been submitted upstream to fix that authentication problem in the original repository: https://github.com/mikeknoop/homebridge-meural.
 
 - Keep functional behavior close to upstream unless a fork-specific fix is required.
 - Prefer compatibility updates that preserve existing user configuration.
@@ -63,8 +59,18 @@ Some deprecation warnings may still come from transitive dependencies in the Hom
 }
 ```
 
+2. Install the plugin:
 
-2. `npm install homebridge-meural`
+  - From npm: `sudo npm install -g homebridge-meural`
+  - Directly from this fork (recommended while waiting for upstream auth fix): `sudo npm install -g github:kboenke/homebridge-meural`
+
+## Install directly from this fork
+
+You can install this plugin directly from GitHub without waiting for a new npm release:
+
+`sudo npm install -g github:kboenke/homebridge-meural`
+
+Then restart Homebridge.
 
 ## Version history
 
@@ -106,3 +112,7 @@ This repo is written in TypeScript.
 ## License
 
 MIT
+
+## 3rd Party Licenses
+
+See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
