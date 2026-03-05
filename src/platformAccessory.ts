@@ -23,14 +23,14 @@ export class CanvasAccessory {
   // this is an aggregated state of all canvases grouped together
   // it is okay there are state differences b/w devices here
   // because they'll get resolved whenever the user first interacts with the device
-  private state = {
-    Active: this.platform.Characteristic.Active.ACTIVE,
-    ActiveIdentifier: 0,
-    ConfiguredName: 'Meural Canvas',
-    RemoteKey: 0,
-    SleepDiscoveryMode: this.platform.Characteristic.SleepDiscoveryMode.ALWAYS_DISCOVERABLE,
-    Brightness: 100,
-    WasBrightnessZero: false,
+  private state!: {
+    Active: number;
+    ActiveIdentifier: number;
+    ConfiguredName: string;
+    RemoteKey: number;
+    SleepDiscoveryMode: number;
+    Brightness: number;
+    WasBrightnessZero: boolean;
   }
 
   private previousRandom: number[] = []
@@ -46,6 +46,16 @@ export class CanvasAccessory {
     private readonly platform: CanvasPlatform,
     private readonly accessory: PlatformAccessory,
   ) {
+    this.state = {
+      Active: this.platform.Characteristic.Active.ACTIVE,
+      ActiveIdentifier: 0,
+      ConfiguredName: 'Meural Canvas',
+      RemoteKey: 0,
+      SleepDiscoveryMode: this.platform.Characteristic.SleepDiscoveryMode.ALWAYS_DISCOVERABLE,
+      Brightness: 100,
+      WasBrightnessZero: false,
+    };
+
 
     // local ip address of this device on the network
     this.ips = this.accessory.context.devices.map((device: any) => device.localIp);

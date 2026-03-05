@@ -16,8 +16,8 @@ axiosRetry(axios, { retries: 5, retryDelay: axiosRetry.exponentialDelay});
  * parse the user config and discover/register accessories with Homebridge.
  */
 export class CanvasPlatform implements DynamicPlatformPlugin {
-  public readonly Service = this.api.hap.Service;
-  public readonly Characteristic = this.api.hap.Characteristic;
+  public readonly Service: API['hap']['Service'];
+  public readonly Characteristic: API['hap']['Characteristic'];
 
   // this is used to track restored cached accessories
   public readonly accessories: PlatformAccessory[] = [];
@@ -31,6 +31,9 @@ export class CanvasPlatform implements DynamicPlatformPlugin {
     public readonly config: PlatformConfig,
     public readonly api: API,
   ) {
+    this.Service = this.api.hap.Service;
+    this.Characteristic = this.api.hap.Characteristic;
+
     this.log.debug('Finished initializing platform:', this.config.platform);
 
     this.getRandom = this.memoizeTimeout(this.getRandomDirect, 60000);
