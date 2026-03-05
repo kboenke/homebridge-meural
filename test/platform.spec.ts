@@ -1,8 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const axiosGetMock = vi.fn();
-const cognitoSendMock = vi.fn();
-const canvasAccessoryCtorMock = vi.fn();
+const { axiosGetMock, cognitoSendMock, canvasAccessoryCtorMock } = vi.hoisted(() => ({
+  axiosGetMock: vi.fn(),
+  cognitoSendMock: vi.fn(),
+  canvasAccessoryCtorMock: vi.fn(),
+}));
 
 vi.mock('axios', () => ({
   default: {

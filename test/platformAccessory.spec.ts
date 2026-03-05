@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 
-const axiosGetMock = vi.fn();
+const { axiosGetMock } = vi.hoisted(() => ({
+  axiosGetMock: vi.fn(),
+}));
 
 vi.mock('axios', () => ({
   default: {
