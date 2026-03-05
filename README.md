@@ -22,6 +22,26 @@ Control Meural canvases via HomeKit. Supports single or multiple canvases.
 
 Works with Canvas I, Canvas II, and Frame.
 
+## Fork and compatibility notes
+
+This repository is maintained as a fork of the original `homebridge-meural` plugin.
+
+- Keep functional behavior close to upstream unless a fork-specific fix is required.
+- Prefer compatibility updates that preserve existing user configuration.
+
+Current runtime baseline for this fork:
+
+- Homebridge: `>=1.8.0` (tested target: `1.11.x`)
+- Node.js: `>=18.20.4` (tested target: Node `24.x`)
+
+If you are upgrading from older releases, run:
+
+1. `npm install`
+2. `npm run build`
+3. `npm audit`
+
+Some deprecation warnings may still come from transitive dependencies in the Homebridge ecosystem and are not always fixable in this plugin alone.
+
 ## Installation
 
 1. Add and fill out the following in your `config.json` in the `platforms` section:

@@ -13,8 +13,8 @@
     "url": "https://github.com/mikeknoop/homebridge-meural/issues"
   },
   "engines": {
-    "node": ">=10.17.0",
-    "homebridge": ">0.4.53"
+    "node": ">=18.20.4",
+    "homebridge": ">=1.8.0"
   },
   "main": "dist/index.js",
   "scripts": {
@@ -27,19 +27,19 @@
     "homebridge-plugin"
   ],
   "dependencies": {
-    "axios": "^0.19.2",
-    "axios-retry": "^3.1.8"
+    "axios": "^1.12.2",
+    "axios-retry": "^4.5.0"
   },
   "devDependencies": {
-    "@types/node": "^13.13.4",
-    "@typescript-eslint/eslint-plugin": "^2.30.0",
-    "@typescript-eslint/parser": "^2.30.0",
-    "eslint": "^6.8.0",
-    "homebridge": "^1.0.4",
-    "nodemon": "^2.0.3",
-    "rimraf": "^3.0.2",
-    "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "@types/node": "^24.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.34.0",
+    "homebridge": "^1.11.2",
+    "nodemon": "^3.1.10",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   },
   "homepage": "https://github.com/mikeknoop/homebridge-meural#readme",
   "author": "Mike Knoop"
